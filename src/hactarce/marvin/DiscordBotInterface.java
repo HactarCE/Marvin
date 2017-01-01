@@ -70,7 +70,6 @@ public class DiscordBotInterface extends InterfacedEventManager implements BotIn
 			printIncoming(event);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("meow");
 			master.getPrivateChannel().sendMessage("Master, I've encountered a message while parsing a recent event.").queue();
 			master.getPrivateChannel().sendMessage(
 					Utils.fmt("```\nEVENT CLASS: %s\n\n%s\n```", event.getClass().getName(), ExceptionUtils.getStackTrace(e))
