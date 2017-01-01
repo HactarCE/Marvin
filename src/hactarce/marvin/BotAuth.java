@@ -27,6 +27,10 @@ public class BotAuth {
 		return jda.getUserById(getDiscordProps().getProperty("master"));
 	}
 
+	public static String getDiscordInviteURL() throws IOException {
+		return Utils.fmt("https://discordapp.com/api/oauth2/authorize?client_id=%s&scope=bot&permissions=0", getDiscordProps().getProperty("clientid"));
+	}
+
 	private static Properties getDiscordProps() throws IOException {
 		Properties properties = new Properties();
 		properties.load(BotAuth.class.getClassLoader().getResourceAsStream(discordAuthInfoFile));

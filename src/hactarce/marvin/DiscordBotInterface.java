@@ -34,17 +34,18 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 
-public class DiscordBotInterface extends InterfacedEventManager implements BotInterface {
+public class DiscordBotInterface extends InterfacedEventManager {
 
-	@Override
-	public String getStringID() {
-		return "DISCORD";
-	}
+	private static final String MESSAGE_FORMAT_MSG = "[%s] %s";
+	private static final String MESSAGE_FORMAT_PM_USER_MSG = "[%s][PM][%s][%s] %s";
+	private static final String MESSAGE_FORMAT_SERVER_MSG = "[%s][%s] %s";
+	private static final String MESSAGE_FORMAT_SERVER_USER_MSG = "[%s][%s][%s] %s";
+	private static final String MESSAGE_FORMAT_SERVER_CHANNEL_MSG = "[%s][%s][%s] %s";
+	private static final String MESSAGE_FORMAT_SERVER_CHANNEL_USER_MSG = "[%s][%s][%s][%s] %s";
 
-	private static JDA jda;
+	private JDA jda;
 	private User master;
 
-	@Override
 	public void init() {
 		try {
 			jda = new JDABuilder(AccountType.BOT)
@@ -62,6 +63,10 @@ public class DiscordBotInterface extends InterfacedEventManager implements BotIn
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String getStringID() {
+		return "DISCORD";
 	}
 
 	@Override
