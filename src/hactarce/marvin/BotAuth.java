@@ -11,7 +11,7 @@ public class BotAuth {
 	private BotAuth() {
 	}
 
-	private static String discordAuthInfoFile = "discordapi.properties";
+	private static final String DISCORD_AUTH_INFO_FILE = "discordapi.properties";
 
 	public static String getDiscordApiToken() throws IOException {
 		try {
@@ -33,7 +33,7 @@ public class BotAuth {
 
 	private static Properties getDiscordProps() throws IOException {
 		Properties properties = new Properties();
-		properties.load(BotAuth.class.getClassLoader().getResourceAsStream(discordAuthInfoFile));
+		properties.load(Utils.getResourceAsStream(DISCORD_AUTH_INFO_FILE));
 		return properties;
 	}
 

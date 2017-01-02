@@ -1,0 +1,70 @@
+{
+  "EMOJI_SMILE": [
+    ":slight_smile:",
+    ":smile:",
+    ":smile_cat:",
+    ":smiley:",
+    ":smiley_cat:"
+  ],
+  "EMOJI_SLEEP": [
+    ":sleeping:",
+    ":sleepy:"
+  ],
+  "FAMILIAR_GREETING": [
+    "Good day, $0$!",
+    "Good day, $0$."
+  ],
+  "FAMILIAR_GREETING_AFTERNOON": [
+    "$FAMILIAR_GREETING$",
+    "Good afternoon, $0$! $EMOJI_SMILE$",
+    "Good afternoon, $0$!",
+    "Good afternoon, $0$. $EMOJI_SMILE$",
+    "Good afternoon, $0$."
+  ],
+  "FAMILIAR_GREETING_EARLY_MORNING": [
+    "$FAMILIAR_GREETING_MORNING$ You're up early today, aren't you?"
+  ],
+  "FAMILIAR_GREETING_EVENING": [
+    "Good evening, $0$! $EMOJI_SMILE$",
+    "Good evening, $0$!",
+    "Good evening, $0$. $EMOJI_SMILE$",
+    "Good evening, $0$."
+  ],
+  "FAMILIAR_GREETING_MORNING": [
+    "$FAMILIAR_GREETING$",
+    "Good morning, $0$! $EMOJI_SMILE$",
+    "Good morning, $0$!",
+    "Good morning, $0$. $EMOJI_SMILE$",
+    "Good morning, $0$."
+  ],
+  "FAMILIAR_GREETING_NIGHT": [
+    "You're still up? This is way past my bedtime! $EMOJI_SLEEP$"
+  ],
+  "FIRST_MEET": [
+    "I don't recognize you. $FIRST_MEET_2$",
+    "I don't think I've met you before. $FIRST_MEET_2$",
+    "I don't think we've met before. $FIRST_MEET_2$"
+  ],
+  "FIRST_MEET_2": [
+    "Well it's nice to meet you! $EMOJI_SMILE$"
+  ],
+  "GREET": [
+    "Hey $0$!",
+    "Hey there, $0$.",
+    "Hi $0$!",
+    "Hi there, $0$!",
+    "Ohai $0$!"
+  ],
+  "LONG_TIME_NO_SEE": [
+    "I haven't seen you in a while.",
+    "It's been a while, hasn't it?",
+    "Long time, no see!",
+    "Where have you been lately? I haven't seen you around."
+  ],
+  "SWITCH_PERSONALITY": [
+    "I like this personality best. $EMOJI_SMILE$"
+  ],
+  "WELCOME": [
+    "Welcome to $SERVER$, $USER$!"
+  ]
+}

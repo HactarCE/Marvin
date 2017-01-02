@@ -3,9 +3,16 @@ package hactarce.marvin;
 import com.sun.istack.internal.NotNull;
 import com.sun.istack.internal.Nullable;
 
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class Utils {
+
+	private Utils() {
+	}
 
 	public static final Locale LOCALE = Locale.US;
 
@@ -13,12 +20,21 @@ public class Utils {
 		return String.format(LOCALE, format, args);
 	}
 
-	public static void println(@NotNull String format, @Nullable Object... args) {
-		System.out.println(fmt(format, args));
+	public static void log(@NotNull String format, @Nullable Object... args) {
+		System.out.println(new SimpleDateFormat("[HH:mm:ss] ").format(new Date()) + fmt(format, args));
 	}
 
 	public static void sneakyCrash() {
 		Utils.fmt("%s");
+	}
+
+	public static InputStream getResourceAsStream(String name) {
+		return Utils.class.getClassLoader().getResourceAsStream(name);
+	}
+
+	public static String getResourceAsString(String name) {
+		Scanner s = new java.util.Scanner(getResourceAsStream(name)).useDelimiter("\\A");
+		return s.hasNext() ? s.next() : "";
 	}
 
 }
