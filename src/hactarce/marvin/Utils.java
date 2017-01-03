@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Utils {
 
@@ -35,6 +36,11 @@ public class Utils {
 	public static String getResourceAsString(String name) {
 		Scanner s = new java.util.Scanner(getResourceAsStream(name)).useDelimiter("\\A");
 		return s.hasNext() ? s.next() : "";
+	}
+
+	// Removes unnecessary whitespace
+	public static String sanitize(String s) {
+		return Pattern.compile("\\s+").matcher(s.trim()).replaceAll(" ");
 	}
 
 }
