@@ -1,6 +1,6 @@
 package hactarce.marvin.ai;
 
-import hactarce.marvin.BotAuth;
+import hactarce.marvin.bot.BotAuth;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.User;
 import org.json.JSONArray;

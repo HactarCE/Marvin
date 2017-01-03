@@ -1,6 +1,6 @@
 package hactarce.marvin.ai;
 
-import hactarce.marvin.DiscordLogger;
+import hactarce.marvin.bot.DiscordLogger;
 import hactarce.marvin.Utils;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
