@@ -43,4 +43,26 @@ public class Utils {
 		return Pattern.compile("\\s+").matcher(s.trim()).replaceAll(" ");
 	}
 
+	//region Millisecond conversion
+	public static long now() {
+		return System.currentTimeMillis();
+	}
+
+	public static long seconds(int s) {
+		return 1000 * s;
+	}
+
+	public static long minutes(int m) {
+		return 1000 * 60 *  m;
+	}
+
+	public static long hours(int h) {
+		return 1000 * 60 * 60 * h;
+	}
+
+	public static long days(int d) {
+		return 1000 * 60 * 60 * 24 * d;
+	}
+	//endregion
+
 }

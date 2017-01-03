@@ -21,6 +21,7 @@ public class Marvin extends DiscordLogger {
 
 	private Memory memory;
 	private ConversationContext conversation;
+	private long lastConversationMsg = Integer.MAX_VALUE;
 
 	@Override
 	public void init() {
@@ -98,10 +99,10 @@ public class Marvin extends DiscordLogger {
 			MessageReceivedEvent _event = (MessageReceivedEvent) event;
 			if (_event.getAuthor() != jda.getSelfUser()) {
 				if (!memory.knows(_event.getAuthor())) {
-					firstGreet(new ConversationContext(_event.getAuthor(), _event.getMember().getEffectiveName(), _event.getTextChannel()));
+					firstGreet(new ConversationContext(_event));
 				}
-				memory.getPerson(_event.getAuthor()).lastSeen = System.currentTimeMillis();
-				personAction(new ConversationContext(_event.getAuthor(), _event.getMember().getEffectiveName(), _event.getTextChannel()));
+				memory.getPerson(_event.getAuthor()).lastSeen = Utils.now();
+				personAction(new ConversationContext(_event));
 				saveAllMemory();
 			}
 		}
@@ -146,15 +147,15 @@ public class Marvin extends DiscordLogger {
 	}
 
 	private void personAction(ConversationContext context) {
-		if (context.person.lastSeen + 60 * 24 * 3 < System.currentTimeMillis()) {
+		if (context.person.lastSeen + Utils.days(3) < Utils.now()) {
 			context.sendMessage(MsgGen.join(
 					MsgGen.timeOfDayGreeting(context.name),
 					MsgGen.generate(MessageType.LONG_TIME_NO_SEE)
 			));
-		} else if (context.person.lastSeen + 60 * 6 < System.currentTimeMillis()) {
+		} else if (context.person.lastSeen + 60 * 6 < Utils.now()) {
 			context.sendMessage(MsgGen.timeOfDayGreeting(context.name));
 		}
-		context.person.lastSeen = System.currentTimeMillis();
+		context.person.lastSeen = Utils.now();
 	}
 
 	class ConversationContext {
@@ -169,6 +170,10 @@ public class Marvin extends DiscordLogger {
 			this.channel = channel;
 		}
 
+		ConversationContext(MessageReceivedEvent event) {
+			this(memory.getPerson(event.getAuthor()), event.getMember().getEffectiveName(), event.getTextChannel());
+		}
+
 		ConversationContext(User user, String name, TextChannel channel) {
 			this(memory.getPerson(user), name, channel);
 		}
@@ -176,7 +181,9 @@ public class Marvin extends DiscordLogger {
 		void sendMessage(String s) {
 			channel.sendMessage(s).queue();
 		}
+	}
 
+		}
 	}
 
 }
